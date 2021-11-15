@@ -1,15 +1,18 @@
 import { Plugin } from 'unified';
 import { visit } from 'unist-util-visit';
 import { Root } from 'mdast';
+import { EOL } from 'os';
+import { extractSnippet } from './helpers/extract-snippet';
 
-interface PluginOptions {}
+interface PluginOptions {
+  eol?: string;
+}
 
-const RemarkCodeImportSnippetsJsTsPlugin: Plugin<PluginOptions[], Root> = (
-  _options
+export const RemarkCodeImportSnippetsPlugin: Plugin<PluginOptions[], Root> = (
+  options: PluginOptions
 ) => {
-  return async (tree, file) => {
-    const transformations: Promise<void>[] = [];
-
+  const { eol = EOL } = options;
+  return async (tree) => {
     visit(tree, 'code', (node) => {
       const codeAttributes = node.meta?.split(' ');
       const fileAttribute = codeAttributes?.find((meta) =>
@@ -28,9 +31,7 @@ const RemarkCodeImportSnippetsJsTsPlugin: Plugin<PluginOptions[], Root> = (
         return;
       }
 
-      // snip() snip()
+      node.value = extractSnippet(node.value, snippetId, eol);
     });
   };
 };
-
-export default RemarkCodeImportSnippetsJsTsPlugin;

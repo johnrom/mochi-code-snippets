@@ -8,7 +8,7 @@ const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 export default {
   input: './src/index.ts',
 
-  external: [],
+  external: [/@babel\/runtime/],
 
   plugins: [
     // Allows node_modules resolution
@@ -18,7 +18,7 @@ export default {
     commonjs(),
 
     // Compile TypeScript/JavaScript files
-    babel({ extensions, include: ['src/**/*'] }),
+    babel({ extensions, include: ['src/**/*'], babelHelpers: 'runtime' }),
   ],
 
   output: [

@@ -1,7 +1,7 @@
 import { remark } from 'remark';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const remarkCodeImportPlugin = require('remark-code-import');
-import { RemarkCodeImportSnippetsPlugin } from '../src';
+const RemarkCodeImportPlugin = require('remark-code-import');
+import { RemarkPluginCodeSnippets } from '../src';
 import path from 'path';
 
 const createCodeBlock = (file: string) => `
@@ -9,11 +9,11 @@ const createCodeBlock = (file: string) => `
 \`\`\`
 `;
 
-test('JS Snippet: Start', () => {
+test('Works with `remark-code-import`', () => {
   expect(
     remark()
-      .use(remarkCodeImportPlugin, {})
-      .use(RemarkCodeImportSnippetsPlugin, {})
+      .use(RemarkCodeImportPlugin, {})
+      .use(RemarkPluginCodeSnippets, {})
       .processSync({
         contents: createCodeBlock('basic-test-file.js@'),
         path: path.resolve('test.md'),

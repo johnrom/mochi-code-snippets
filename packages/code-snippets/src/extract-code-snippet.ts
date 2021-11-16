@@ -3,7 +3,7 @@ const anyEndRegex = `^\\s*// @snippet:end\\s*$`;
 /**
  * This is a super basic prototype based off of `remark-code-import`.
  */
-export const extractSnippet = (
+export const extractCodeSnippet = (
   content: string,
   snippetId: string,
   eol: string

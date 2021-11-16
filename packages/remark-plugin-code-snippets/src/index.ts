@@ -2,13 +2,13 @@ import { Plugin } from 'unified';
 import { visit } from 'unist-util-visit';
 import { Root } from 'mdast';
 import { EOL } from 'os';
-import { extractSnippet } from './helpers/extract-snippet';
+import { extractCodeSnippet } from '@nimblelight/code-snippets';
 
 interface PluginOptions {
   eol?: string;
 }
 
-export const RemarkCodeImportSnippetsPlugin: Plugin<PluginOptions[], Root> = (
+export const RemarkPluginCodeSnippets: Plugin<PluginOptions[], Root> = (
   options: PluginOptions
 ) => {
   const { eol = EOL } = options;
@@ -31,7 +31,7 @@ export const RemarkCodeImportSnippetsPlugin: Plugin<PluginOptions[], Root> = (
         return;
       }
 
-      node.value = extractSnippet(node.value, snippetId, eol);
+      node.value = extractCodeSnippet(node.value, snippetId, eol);
     });
   };
 };

@@ -1,9 +1,10 @@
+// Just compile JS here in helper land.
 {
-  "extends": "../tsconfig.base.json",
+  "extends": "../../../tsconfig.base.json",
   "exclude": [],
   "compilerOptions": {
-    "module": "ESNext",
     "outDir": ".",
+    "module": "ESNext",
     "declaration": false,
     "moduleResolution": "Node"
   }

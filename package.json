@@ -2,15 +2,20 @@
   "name": "@nimblelight/code-snippets-repo",
   "private": "true",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/nimblelight/code-snippets.git",
+  "license": "UNLICENSED",
   "author": "John Rom <john@nimblelight.com>",
+  "scripts": {
+    "build": "lerna run build",
+    "watch": "lerna run watch"
+  },
   "devDependencies": {
     "lerna": "^4.0.0"
   },
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "examples/*"
     ]
   }
 }

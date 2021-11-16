@@ -1,19 +1,17 @@
+import { getBaseRollupConfig } from '../../helpers/getBaseRollupConfig';
 import pkg from './package.json';
-import { getBaseRollupConfig } from '../../helpers/build-helpers';
 
-export default [
-  {
-    ...getBaseRollupConfig(),
-    output: {
+export default getBaseRollupConfig('./tsconfig.rollup.json', (options) => ({
+  ...options,
+  input: './src/index.ts',
+  output: [
+    {
       file: pkg.main,
       format: 'cjs',
     },
-  },
-  {
-    ...getBaseRollupConfig('./tsconfig.rollup.json'),
-    output: {
+    {
       file: pkg.module,
       format: 'es',
     },
-  },
-];
+  ],
+}));

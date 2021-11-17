@@ -13,10 +13,10 @@ module.exports = {
       options: {
         outputPath: 'types/gatsby-types.ts',
         emitSchema: {
-          'types/gatsby-schema.json': true,
+          '.generated/gatsby-schema.json': true,
         },
         emitPluginDocuments: {
-          'types/gatsby-plugin-documents.graphql': true,
+          '.generated/gatsby-plugin-documents.graphql': true,
         },
       },
     },

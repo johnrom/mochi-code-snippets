@@ -5,22 +5,61 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-postcss',
+    'gatsby-plugin-tsconfig-paths',
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-typescript-checker',
+    {
+      resolve: `gatsby-plugin-typegen`,
+      options: {
+        outputPath: 'types/gatsby-types.ts',
+        emitSchema: {
+          'types/gatsby-schema.json': true,
+        },
+        emitPluginDocuments: {
+          'types/gatsby-plugin-documents.graphql': true,
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'pages',
-        path: './src/pages/',
+        path: `${__dirname}/src/pages/`,
       },
       __key: 'pages',
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'docs',
-        path: `${__dirname}/content/docs`,
+        name: 'content',
+        path: `${__dirname}/content`,
       },
-      __key: 'docs',
+      __key: 'content',
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: 'remark-code-import/gatsby',
+            options: {
+              async: true,
+            },
+          },
+          {
+            resolve: '@nmbl/gatsby-remark-code-snippets',
+            options: {
+              async: true,
+            },
+          },
+          {
+            resolve: '@nmbl/gatsby-remark-code-snippet-remover',
+            options: {
+              async: true,
+            },
+          },
+        ],
+      },
+    },
   ],
 };

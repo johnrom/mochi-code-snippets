@@ -3,11 +3,28 @@
   "tasks": [
     {
       "type": "typescript",
-      "tsconfig": "./helpers/tsconfig.json",
+      "tsconfig": "./helpers/tsconfig.watch.json",
       "option": "watch",
       "problemMatcher": ["$tsc-watch"],
       "group": "none",
-      "label": "tsc: watch - helpers/tsconfig.json",
+      "label": "tsc: watch - helpers",
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/c"]
+        }
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "type": "typescript",
+      "tsconfig": "./fixtures/tsconfig.watch.json",
+      "option": "watch",
+      "problemMatcher": ["$tsc-watch"],
+      "group": "none",
+      "label": "tsc: watch - fixtures",
       "options": {
         "shell": {
           "executable": "cmd.exe",

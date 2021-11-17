@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": ["packages", "helpers", "examples"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@nmbl/code-snippets": ["./packages/code-snippets/src"],
+      "@nmbl/remark-code-snippet-remover": [
+        "./packages/remark-code-snippet-remover/src"
+      ],
+      "@nmbl/remark-code-snippets": ["./packages/remark-code-snippets/src"]
+    }
+  }
+}

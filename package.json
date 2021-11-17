@@ -1,13 +1,14 @@
 {
-  "name": "@nimblelight/code-snippets-repo",
+  "name": "@nmbl/code-snippets-repo",
   "private": "true",
   "version": "1.0.0",
   "repository": "https://github.com/nimblelight/code-snippets.git",
   "license": "UNLICENSED",
   "author": "John Rom <john@nimblelight.com>",
   "scripts": {
+    "start": "lerna run start --stream",
     "build": "lerna run build",
-    "watch": "lerna run watch"
+    "watch-all": "lerna run watch"
   },
   "devDependencies": {
     "lerna": "^4.0.0"

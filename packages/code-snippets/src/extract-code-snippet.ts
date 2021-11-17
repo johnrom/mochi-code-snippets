@@ -1,42 +1,58 @@
-const anyEndRegex = `^\\s*// @snippet:end\\s*$`;
+import {
+  getCodeSnippetRegexDefinitions,
+  snippetIdRegexString,
+} from './code-snippet-definitions';
+
+const snippetIdRegex = new RegExp(`/^${snippetIdRegexString}$/`);
 
 /**
- * This is a super basic prototype based off of `remark-code-import`.
+ * Extract a code snippet from a code block with a given snippet ID.
+ *
+ * @param extension The extension type of the code, like 'md' or 'js'.
+ * @param eol The end-of-line operator of the file, like \n or \r\n.
  */
 export const extractCodeSnippet = (
-  content: string,
+  extension: string | null | undefined,
+  codeBlock: string,
   snippetId: string,
   eol: string
 ) => {
   // alphanumeric, dashes and underscores
   // otherwise, no match!
-  if (!snippetId.match(/[A-Za-z0-9-_]+/)) {
+  if (!snippetId.match(snippetIdRegex)) {
     return '';
   }
 
-  const startRegex = `^\\s*// @snippet:start ${snippetId}\\s*$`;
-  const endRegex = `^\\s*// @snippet:end ${snippetId}\\s*$`;
+  const regexDefinitions = getCodeSnippetRegexDefinitions(extension, snippetId);
 
-  const snippetStart = content.search(new RegExp(startRegex, 'im'));
+  for (let i = 0; i < regexDefinitions.length; i++) {
+    const regexDefinition = regexDefinitions[i];
 
-  // there must be a beginning, or no match
-  if (snippetStart === -1) {
-    return '';
+    const snippetStart = codeBlock.search(
+      new RegExp(regexDefinition.start, 'im')
+    );
+
+    // there must be a beginning, or no match
+    if (snippetStart === -1) {
+      continue;
+    }
+
+    let snippet = codeBlock.substr(snippetStart);
+    let snippetEnd = snippet.search(new RegExp(regexDefinition.end, 'im'));
+
+    // if no end for `snippetId`, check for one without an ID
+    if (snippetEnd === -1) {
+      snippetEnd = snippet.search(new RegExp(regexDefinition.emptyEnd, 'im'));
+    }
+
+    // if we found an end, slice it
+    if (snippetEnd !== -1) {
+      snippet = snippet.substr(0, snippetEnd);
+    }
+
+    // remove @snippet:start and trailing newline
+    return snippet.split(eol).slice(1).join('\n');
   }
 
-  let snippet = content.substr(snippetStart);
-  let snippetEnd = snippet.search(new RegExp(endRegex, 'im'));
-
-  // if no end for `snippetId`, check for one without an ID
-  if (snippetEnd === -1) {
-    snippetEnd = snippet.search(new RegExp(anyEndRegex, 'im'));
-  }
-
-  // if we found an end, slice it
-  if (snippetEnd !== -1) {
-    snippet = snippet.substr(0, snippetEnd);
-  }
-
-  // remove @snippet:start and trailing newline
-  return snippet.split(eol).slice(1).join('\n');
+  return '';
 };

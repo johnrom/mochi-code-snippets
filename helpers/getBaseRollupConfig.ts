@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import typescript from 'rollup-plugin-typescript2';
 import { RollupOptions } from 'rollup';
+import path from 'path';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
@@ -13,7 +14,8 @@ export const getBaseRollupConfig = (
   callback: Callback
 ): (RollupOptions | [])[] => {
   const baseBuildConfig: RollupOptions = {
-    external: [/@babel\/runtime/],
+    external: (source: string) =>
+      !source.startsWith('.') && !path.isAbsolute(source),
 
     plugins: [
       // Allows node_modules resolution

@@ -1,5 +1,9 @@
+import * as React from 'react';
+
 export const Header = () => (
-  <header>
+  // @snippet:start header
+  <header className="main-header">
     <h1>Nmbl Code Snippets</h1>
   </header>
+  // @snippet:end header
 );

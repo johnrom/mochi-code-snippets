@@ -18,7 +18,7 @@ This project is how. I'm writing in a markdown document right now, and I'm about
 
 I've created a snippet surrounding the header of this very website. If there is anything incorrect about the code of the header of this website, the entire build will fail.
 
-### The Source ([with snippets preserved](docs/preserving-snippets)):
+### The Source ([with snippets preserved](preserving-snippets)):
 
 [comment]: # '@snippet:start preserve-snippets'
 

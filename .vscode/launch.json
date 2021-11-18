@@ -1,0 +1,32 @@
+{
+  "configurations": [
+    {
+      "name": "Attach by Process ID",
+      "processId": "${command:PickProcess}",
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "pwa-node"
+    },
+    {
+      "command": "npm run build",
+      "name": "Build Website",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/packages/code-snippets-website"
+    },
+    {
+      "command": "npm run start",
+      "name": "Launch Website",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/packages/code-snippets-website"
+    },
+    {
+      "command": "npm run debug",
+      "name": "Debug Website",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/packages/code-snippets-website"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import {
   snippetIdRegexString,
 } from './code-snippet-definitions';
 
-const snippetIdRegex = new RegExp(`/^${snippetIdRegexString}$/`);
+const snippetIdRegex = new RegExp(`^${snippetIdRegexString}$`);
 
 /**
  * Extract a code snippet from a code block with a given snippet ID.
@@ -20,7 +20,9 @@ export const extractCodeSnippet = (
   // alphanumeric, dashes and underscores
   // otherwise, no match!
   if (!snippetId.match(snippetIdRegex)) {
-    return '';
+    throw new Error(
+      'Code Snippets: SnippetId should only contain alphanumeric characters, dashes and underscores.'
+    );
   }
 
   const regexDefinitions = getCodeSnippetRegexDefinitions(extension, snippetId);

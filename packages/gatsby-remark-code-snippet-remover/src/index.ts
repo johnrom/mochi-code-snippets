@@ -1,8 +1,8 @@
 import { RemarkPluginCodeSnippetRemover } from '@nmbl/remark-code-snippet-remover';
 const toGatsbyRemarkPlugin = require('to-gatsby-remark-plugin');
 
-interface PluginOptions {
-  eol?: string;
-}
+export const GatsbyRemarkPluginCodeSnippetRemover = toGatsbyRemarkPlugin(
+  RemarkPluginCodeSnippetRemover
+);
 
-export const GatsbyRemarkPluginCodeSnippetRemover = toGatsbyRemarkPlugin;
+module.exports = GatsbyRemarkPluginCodeSnippetRemover;

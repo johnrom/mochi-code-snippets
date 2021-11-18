@@ -5,21 +5,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-postcss',
-    'gatsby-plugin-tsconfig-paths',
     'gatsby-plugin-typescript',
-    'gatsby-plugin-typescript-checker',
-    {
-      resolve: `gatsby-plugin-typegen`,
-      options: {
-        outputPath: 'types/gatsby-types.ts',
-        emitSchema: {
-          '.generated/gatsby-schema.json': true,
-        },
-        emitPluginDocuments: {
-          '.generated/gatsby-plugin-documents.graphql': true,
-        },
-      },
-    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

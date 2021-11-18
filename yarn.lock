@@ -1781,6 +1781,14 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@johnrom/remark-code-import@0.4.1-beta1":
+  version "0.4.1-beta1"
+  resolved "https://registry.yarnpkg.com/@johnrom/remark-code-import/-/remark-code-import-0.4.1-beta1.tgz#82754cf9e4ade0f1e7c4b9c8671ecded9b68e42e"
+  integrity sha512-754fjSOKGNI7XcYbSr45bTIDKfXv7mzF8+p9G6iTtIK+y/d2628DpmIRV2wjYVp6wJ+o+hfDuI1Zs5U8JfBX3A==
+  dependencies:
+    to-gatsby-remark-plugin "^0.1.0"
+    unist-util-visit "^2.0.1"
+
 "@lerna/add@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@lerna/add/-/add-4.0.0.tgz#c36f57d132502a57b9e7058d1548b7a565ef183f"

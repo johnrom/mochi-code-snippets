@@ -41,22 +41,19 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: 'remark-code-import/gatsby',
+            resolve: '@johnrom/remark-code-import/gatsby',
             options: {
               async: true,
+              basePath: process.cwd(),
             },
           },
           {
             resolve: '@nmbl/gatsby-remark-code-snippets',
-            options: {
-              async: true,
-            },
+            options: {},
           },
           {
             resolve: '@nmbl/gatsby-remark-code-snippet-remover',
-            options: {
-              async: true,
-            },
+            options: {},
           },
         ],
       },

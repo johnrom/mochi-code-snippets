@@ -31,14 +31,14 @@ I've created a snippet surrounding the header of this very website. If there is 
 ### The Markdown:
 
 ````md
-```tsx file=./src/header/header.tsx@header
+```tsx file=./src/header/header.tsx snippet=header
 
 ```
 ````
 
 ### The Output:
 
-```tsx file=./src/header/header.tsx@header
+```tsx file=./src/header/header.tsx snippet=header
 
 ```
 

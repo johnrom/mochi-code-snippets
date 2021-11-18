@@ -28,6 +28,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@johnrom/remark-code-import": "0.4.1-beta1",
     "@types/react": "^17.0.35",
     "@types/react-dom": "^17.0.11",
     "gatsby-plugin-postcss": "^4.14.0",

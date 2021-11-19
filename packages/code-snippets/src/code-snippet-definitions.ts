@@ -9,7 +9,7 @@ export type CodeSnippetRegexDefinitions = {
   default: CodeSnippetRegexDefinition[];
 };
 
-export const snippetIdRegexString = '[A-Za-z0-9-_]+';
+export const snippetIdRegexString = '[A-Za-z0-9][A-Za-z0-9-_]*';
 
 /**
  * These definitions are super basic, and it should probably use AST instead.
@@ -23,25 +23,25 @@ export const getCodeSnippetRegexDefinitions = (
 ) => {
   const snippetIdRegex = maybeSnippetId ?? snippetIdRegexString;
   const doubleSlashedComment = {
-    start: `^\\s*// '@snippet:start ${snippetIdRegex}\\s*'\\s*$`,
-    anyStart: `^\\s*// '@snippet:start ${snippetIdRegex}\\s*'\\s*$`,
-    end: `^\\s*// '@snippet:end ${snippetIdRegex}\\s*'\\s*$`,
-    emptyEnd: `^\\s*// '@snippet:end\\s*'\\s*$`,
+    start: `^\\s*//\\s*@snippet:start ${snippetIdRegex}(?:[^\S\r\n].*)?$`,
+    end: `^\\s*//\\s*@snippet:end ${snippetIdRegex}(?:[^\S\r\n].*)?$`,
+    emptyEnd: `^\\s*//\\s*@snippet:end\\s*$`,
   };
   const allDefinitions: CodeSnippetRegexDefinitions = {
     md: [
       {
-        start: `^[comment]: # '@snippet:start ${snippetIdRegex}\\s*'\\s*$`,
-        end: `^[comment]: # '@snippet:end ${snippetIdRegex}\\s*'\\s*$`,
-        emptyEnd: `[comment]: # '@snippet:end\\s*'\\s*$`,
+        start: `^\\[comment\\]: # '@snippet:start ${snippetIdRegex}[^']*'[^\r\n]*$`,
+        end: `^\\[comment\\]: # '@snippet:end ${snippetIdRegex}[^']*'[^\r\n]*$`,
+        emptyEnd: `^\\[comment\\]: # '@snippet:end[^\S\r\n]*'[^\S\r\n]*$`,
       },
       {
-        start: `^[comment]: # \(@snippet:start ${snippetIdRegex}\\s*\)\\s*$`,
-        end: `^[comment]: # \(@snippet:end ${snippetIdRegex}\\s*\)\\s*$`,
-        emptyEnd: `[comment]: # \(@snippet:end\\s*\)\\s*$`,
+        start: `^\\[comment\\]: # \\(@snippet:start ${snippetIdRegex}[^)\r\n]*\\)[^\r\n]*$`,
+        end: `^\\[comment\\]: # \\(@snippet:end ${snippetIdRegex}[^)\r\n]*\\)[^\r\n]*$`,
+        emptyEnd: `^\\[comment\\]: # \\(@snippet:end[^\S\r\n]*\\)[^\S\r\n]*$`,
       },
     ],
     js: [doubleSlashedComment],
+    cs: [doubleSlashedComment],
     ts: [doubleSlashedComment],
     default: [doubleSlashedComment],
   };

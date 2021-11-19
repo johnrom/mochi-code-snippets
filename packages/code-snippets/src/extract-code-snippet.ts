@@ -30,31 +30,32 @@ export const extractCodeSnippet = (
   for (let i = 0; i < regexDefinitions.length; i++) {
     const regexDefinition = regexDefinitions[i];
 
-    const snippetStart = codeBlock.search(
-      new RegExp(regexDefinition.start, 'im')
+    const snippetStart = new RegExp(regexDefinition.start, 'im').exec(
+      codeBlock
     );
 
     // there must be a beginning, or no match
-    if (snippetStart === -1) {
+    if (!snippetStart) {
       continue;
     }
 
-    let snippet = codeBlock.substr(snippetStart);
-    let snippetEnd = snippet.search(new RegExp(regexDefinition.end, 'im'));
+    let snippet = codeBlock.substr(
+      snippetStart.index + snippetStart[0].length + eol.length
+    );
+    let snippetEnd = new RegExp(regexDefinition.end, 'im').exec(snippet);
 
     // if no end for `snippetId`, check for one without an ID
-    if (snippetEnd === -1) {
-      snippetEnd = snippet.search(new RegExp(regexDefinition.emptyEnd, 'im'));
+    if (!snippetEnd) {
+      snippetEnd = new RegExp(regexDefinition.emptyEnd, 'im').exec(snippet);
     }
 
     // if we found an end, slice it
-    if (snippetEnd !== -1) {
-      snippet = snippet.substr(0, snippetEnd);
+    if (snippetEnd) {
+      snippet = snippet.substr(0, snippetEnd.index - eol.length);
     }
 
-    // remove @snippet:start and trailing newline
-    return snippet.split(eol).slice(1).join('\n');
+    return snippet;
   }
 
-  return '';
+  throw new Error('Code Snippets: SnippetId does not exist.');
 };

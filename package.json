@@ -8,7 +8,9 @@
   "scripts": {
     "start": "lerna run start --stream",
     "build": "lerna run build",
-    "watch-all": "lerna run watch"
+    "watch-all": "lerna run watch",
+    "test": "lerna run test -- --silent",
+    "test:vscode": "lerna run test --stream --no-sort --"
   },
   "devDependencies": {
     "lerna": "^4.0.0"

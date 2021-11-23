@@ -8,7 +8,7 @@ import {
   removeDuplicateEmptyNewlines,
 } from '@nmbl/code-snippets';
 
-interface PluginOptions {
+export interface PluginOptions {
   eol?: string;
   extractSnippets?: boolean;
   removeSnippets?: boolean;

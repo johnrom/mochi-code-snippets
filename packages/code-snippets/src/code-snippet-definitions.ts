@@ -6,7 +6,6 @@ export interface CodeSnippetRegexDefinition {
 
 export type CodeSnippetRegexDefinitions = {
   [key: string]: CodeSnippetRegexDefinition[];
-  default: CodeSnippetRegexDefinition[];
 };
 
 export const snippetIdRegexString = '[A-Za-z0-9][A-Za-z0-9-_]*';
@@ -18,14 +17,19 @@ export const snippetIdRegexString = '[A-Za-z0-9][A-Za-z0-9-_]*';
  * @param maybeSnippetId Pass a snippet ID here, if not it will match any snippet ID (useful for removing snippets)
  */
 export const getCodeSnippetRegexDefinitions = (
-  extension: string | null | undefined,
+  extension: string,
   maybeSnippetId?: string
 ) => {
+  if (!extension) {
+    throw new Error(
+      '@nmbl/code-snippets: regex definitions requested without an extension. Please choose an extension to parse code snippets.'
+    );
+  }
   const snippetIdRegex = maybeSnippetId ?? snippetIdRegexString;
   const doubleSlashedComment = {
-    start: `^\\s*//\\s*@snippet:start ${snippetIdRegex}(?:[^\S\r\n].*)?$`,
-    end: `^\\s*//\\s*@snippet:end ${snippetIdRegex}(?:[^\S\r\n].*)?$`,
-    emptyEnd: `^\\s*//\\s*@snippet:end\\s*$`,
+    start: `^[^\S\r\n]*//\\s*@snippet:start ${snippetIdRegex}(?:[^\S\r\n].*)?$`,
+    end: `^[^\S\r\n]*//\\s*@snippet:end ${snippetIdRegex}(?:[^\S\r\n].*)?$`,
+    emptyEnd: `^[^\S\r\n]*//\\s*@snippet:end\\s*$`,
   };
   const allDefinitions: CodeSnippetRegexDefinitions = {
     md: [
@@ -43,8 +47,13 @@ export const getCodeSnippetRegexDefinitions = (
     js: [doubleSlashedComment],
     cs: [doubleSlashedComment],
     ts: [doubleSlashedComment],
-    default: [doubleSlashedComment],
   };
+
+  if (!extension || !(extension in allDefinitions)) {
+    throw new Error(
+      `@nmbl/code-snippets: The extension "${extension}" doesn't exist in our definitions. Feel free to open a PR to support your language of choice! A link to our repository is available in package.json.`
+    );
+  }
 
   return extension && extension in allDefinitions
     ? allDefinitions[extension]

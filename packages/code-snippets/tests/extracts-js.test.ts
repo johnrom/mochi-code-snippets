@@ -32,7 +32,7 @@ test('Extracts Snippets: From JS', () => {
     extractCodeSnippet('js', getBasicTestFileJs('\r\n'), 'start-file', '\r\n')
   ).toMatchInlineSnapshot(`
     "// @snippet:start start-fn
-    export const basicTestFile = (args) => "
+    export const basicTestFile = (args) => {"
   `);
   expect(
     extractCodeSnippet('js', getBasicTestFileJs('\r\n'), 'start-fn', '\r\n')
@@ -43,13 +43,13 @@ test('Extracts Snippets: From JS', () => {
         let myStr = args.isHello ? 'hello' : 'goodbye';
         // @snippet:start start-iife
         (() => {
-            myStr = 'world'"
+            myStr = 'world';"
   `);
   expect(
     extractCodeSnippet('js', getBasicTestFileJs('\r\n'), 'start-iife', '\r\n')
   ).toMatchInlineSnapshot(`
     "    (() => {
-            myStr = 'world'"
+            myStr = 'world';"
   `);
   expect(extractCodeSnippet('js', getBasicTestFileJs('\r\n'), 'end', '\r\n'))
     .toMatchInlineSnapshot(`

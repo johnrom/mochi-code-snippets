@@ -7,7 +7,10 @@
   "author": "John Rom <john@nimblelight.com>",
   "scripts": {
     "start": "lerna run start --stream",
-    "build": "lerna run build",
+    "build:core": "yarn --cwd packages/code-snippets build",
+    "build:remark-plugin": "yarn --cwd packages/remark-code-snippets build",
+    "build:gatsby-plugin": "yarn --cwd packages/gatsby-remark-code-snippets build",
+    "build": "yarn run build:core && yarn run build:remark-plugin && yarn run build:gatsby-plugin",
     "watch-all": "lerna run watch",
     "test": "lerna run test -- --silent",
     "test:vscode": "lerna run test --stream --no-sort --"

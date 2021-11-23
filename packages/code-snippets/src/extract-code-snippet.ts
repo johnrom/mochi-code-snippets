@@ -12,7 +12,7 @@ const snippetIdRegex = new RegExp(`^${snippetIdRegexString}$`);
  * @param eol The end-of-line operator of the file, like \n or \r\n.
  */
 export const extractCodeSnippet = (
-  extension: string | null | undefined,
+  extension: string,
   codeBlock: string,
   snippetId: string,
   eol: string
@@ -21,7 +21,7 @@ export const extractCodeSnippet = (
   // otherwise, no match!
   if (!snippetId.match(snippetIdRegex)) {
     throw new Error(
-      'Code Snippets: SnippetId should only contain alphanumeric characters, dashes and underscores.'
+      '@nmbl/code-snippets: SnippetId should only contain alphanumeric characters, dashes and underscores.'
     );
   }
 
@@ -57,5 +57,5 @@ export const extractCodeSnippet = (
     return snippet;
   }
 
-  throw new Error('Code Snippets: SnippetId does not exist.');
+  throw new Error('@nmbl/code-snippets: SnippetId does not exist.');
 };

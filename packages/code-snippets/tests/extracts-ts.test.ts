@@ -44,7 +44,7 @@ test('Extracts Snippets: From TS', () => {
       isHello: true;
     }
     // @snippet:start start-fn
-    export const basicTestFile = (args: BasicTestFileArgs) => "
+    export const basicTestFile = (args: BasicTestFileArgs) => {"
   `);
   expect(
     extractCodeSnippet('ts', getBasicTestFileTs('\r\n'), 'start-fn', '\r\n')
@@ -56,13 +56,13 @@ test('Extracts Snippets: From TS', () => {
 
       // @snippet:start start-iife
       (() => {
-        myStr = 'world'"
+        myStr = 'world';"
   `);
   expect(
     extractCodeSnippet('ts', getBasicTestFileTs('\r\n'), 'start-iife', '\r\n')
   ).toMatchInlineSnapshot(`
     "  (() => {
-        myStr = 'world'"
+        myStr = 'world';"
   `);
   expect(extractCodeSnippet('ts', getBasicTestFileTs('\r\n'), 'end', '\r\n'))
     .toMatchInlineSnapshot(`

@@ -1,6 +1,6 @@
 {
   "name": "@nmbl/code-snippets",
-  "version": "1.0.0-beta1",
+  "version": "1.0.0-beta.0",
   "description": "Helpers to extract or remove code snippets from code snippets.",
   "author": "John Rom <web@johnrom.com>",
   "license": "ISC",

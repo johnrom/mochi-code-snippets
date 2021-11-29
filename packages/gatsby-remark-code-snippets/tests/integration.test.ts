@@ -1,7 +1,4 @@
-import {
-  PluginOptions,
-  RemarkPluginCodeSnippets,
-} from '@nmbl/remark-code-snippets';
+import { PluginOptions } from '@nmbl/remark-code-snippets';
 import { remark } from 'remark';
 import path from 'path';
 
@@ -13,11 +10,11 @@ const testArgs: PluginOptions = {
 };
 
 const GatsbyRemarkPluginCodeSnippets = require('../src/index');
+const RemarkPluginCodeSnippets = require('@nmbl/remark-code-snippets');
 
-jest.mock('@nmbl/remark-code-snippets');
-
-// need to return a function
-(RemarkPluginCodeSnippets as any).mockResolvedValue(() => {});
+jest.mock('@nmbl/remark-code-snippets', () =>
+  jest.fn().mockImplementation(() => jest.fn())
+);
 
 test('Correctly instantiates underlying remark plugin.', () => {
   const markdownAST = remark.parse('');

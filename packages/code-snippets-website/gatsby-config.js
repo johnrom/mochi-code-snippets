@@ -37,10 +37,6 @@ module.exports = {
             resolve: '@nmbl/gatsby-remark-code-snippets',
             options: {},
           },
-          {
-            resolve: '@nmbl/gatsby-remark-code-snippet-remover',
-            options: {},
-          },
         ],
       },
     },

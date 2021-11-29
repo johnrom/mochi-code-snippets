@@ -75,3 +75,5 @@ export const RemarkPluginCodeSnippets: Plugin<
     });
   };
 };
+
+export default RemarkPluginCodeSnippets;

@@ -16,10 +16,14 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@johnrom/remark-code-import": "0.4.1-beta1",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
     "@nmbl/gatsby-remark-code-snippets": "1.0.0-beta.0",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.4.0",
     "gatsby": "^4.2.0",
+    "gatsby-plugin-mdx": "^3.2.0",
     "gatsby-plugin-postcss": "^5.2.0",
     "gatsby-plugin-typegen": "^2.2.4",
     "gatsby-plugin-typescript": "^4.2.0",
@@ -27,7 +31,9 @@
     "gatsby-source-filesystem": "^4.2.0",
     "gatsby-transformer-remark": "^5.2.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "rehype-autolink-headings": "^6.1.0",
+    "rehype-slug": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.35",

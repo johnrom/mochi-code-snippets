@@ -45,17 +45,14 @@ export const getCodeSnippetRegexDefinitions = (
       },
     ],
     js: [doubleSlashedComment],
-    cs: [doubleSlashedComment],
+    jsx: [doubleSlashedComment],
     ts: [doubleSlashedComment],
+    tsx: [doubleSlashedComment],
+    cs: [doubleSlashedComment],
+    cshtml: [doubleSlashedComment],
   };
-
-  if (!extension || !(extension in allDefinitions)) {
-    throw new Error(
-      `@nmbl/code-snippets: The extension "${extension}" doesn't exist in our definitions. Feel free to open a PR to support your language of choice! A link to our repository is available in package.json.`
-    );
-  }
 
   return extension && extension in allDefinitions
     ? allDefinitions[extension]
-    : allDefinitions.default;
+    : undefined;
 };

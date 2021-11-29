@@ -12,34 +12,34 @@ type RollupConfigCallback = (config: RollupOptions) => RollupOptions;
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
-const esmOnlyPackages = [/unist/];
+const esmOnlyPackages = [/unist/, /rehype/, /hast/];
 
 const esmExternal = (source: string) =>
   !source.startsWith('.') && !path.isAbsolute(source);
 
 // we pack ESM-only packages for CJS users, just to be nice.
-const cjsExternal = (source: string) =>
+export const cjsExternal = (source: string) =>
   esmExternal(source) &&
   !esmOnlyPackages.find((esmOnlyPackage) => esmOnlyPackage.test(source));
+
+export const getBaseBuildConfig = (include = ['src/**/*']): RollupOptions => ({
+  plugins: [
+    // Allows node_modules resolution
+    resolve({ extensions }),
+
+    // Allow bundling cjs modules. Rollup doesn't understand cjs
+    commonjs(),
+
+    // Compile TypeScript/JavaScript files
+    babel({ extensions, include: ['src/**/*'], babelHelpers: 'runtime' }),
+  ],
+});
 
 export const getBaseRollupConfig = (
   tsConfig: string | false,
   esmCallback: RollupConfigCallback,
   cjsCallback: RollupConfigCallback
 ): (RollupOptions | [])[] => {
-  const baseBuildConfig: RollupOptions = {
-    plugins: [
-      // Allows node_modules resolution
-      resolve({ extensions }),
-
-      // Allow bundling cjs modules. Rollup doesn't understand cjs
-      commonjs(),
-
-      // Compile TypeScript/JavaScript files
-      babel({ extensions, include: ['src/**/*'], babelHelpers: 'runtime' }),
-    ],
-  };
-
   const tsDefinitionsConfig: RollupOptions[] = tsConfig
     ? [
         {
@@ -60,11 +60,11 @@ export const getBaseRollupConfig = (
 
   return tsDefinitionsConfig.concat([
     esmCallback({
-      ...baseBuildConfig,
+      ...getBaseBuildConfig(),
       external: esmExternal,
     }),
     cjsCallback({
-      ...baseBuildConfig,
+      ...getBaseBuildConfig(),
       external: cjsExternal,
     }),
   ]);

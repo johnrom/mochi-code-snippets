@@ -21,11 +21,17 @@ export const extractCodeSnippet = (
   // otherwise, no match!
   if (!snippetId.match(snippetIdRegex)) {
     throw new Error(
-      '@nmbl/code-snippets: SnippetId should only contain alphanumeric characters, dashes and underscores.'
+      `@nmbl/code-snippets: SnippetId should only contain alphanumeric characters, dashes and underscores: '${snippetId}'`
     );
   }
 
   const regexDefinitions = getCodeSnippetRegexDefinitions(extension, snippetId);
+
+  if (!regexDefinitions) {
+    throw new Error(
+      `@nmbl/code-snippets: The extension "${extension}" doesn't exist in our definitions. Feel free to open a PR to support your language of choice! A link to our repository is available in package.json.`
+    );
+  }
 
   for (let i = 0; i < regexDefinitions.length; i++) {
     const regexDefinition = regexDefinitions[i];
@@ -57,5 +63,7 @@ export const extractCodeSnippet = (
     return snippet;
   }
 
-  throw new Error('@nmbl/code-snippets: SnippetId does not exist.');
+  throw new Error(
+    `@nmbl/code-snippets: SnippetId does not exist: '${snippetId}'`
+  );
 };

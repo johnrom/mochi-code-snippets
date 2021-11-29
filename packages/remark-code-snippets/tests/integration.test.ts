@@ -22,6 +22,30 @@ const getJsMarkdownWithoutExtension = (eol: string = '\n') =>
 const getTonsOfNewlines = (eol: string = '\n') =>
   `\`\`\`${eol}Test Newlines${eol}${eol}${eol}${eol}/Test Newlines${eol}\`\`\``;
 
+test('Plugin works.', () => {
+  expect(
+    // @snippet:start remark-plugin
+    remark()
+      .use(RemarkPluginCodeSnippets, {})
+      .processSync(
+        `\`\`\`js snippet=test-snippet
+        const hello = () => {
+          // @snippet:start test-snippet
+          console.log('world');
+          // @snippet:end test-snippet
+        }
+        \`\`\``
+      )
+      .toString()
+    // @snippet:end remark-plugin
+  ).toMatchInlineSnapshot(`
+    "\`\`\`js snippet=test-snippet
+             console.log('world')
+    \`\`\`
+    "
+  `);
+});
+
 test("Doesn't affect extensionless blocks.", () => {
   expect(
     remark()

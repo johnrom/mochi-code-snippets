@@ -44,6 +44,7 @@ I've created a snippet surrounding the header of this very website. If there is 
 
 If you're reading this on an actual website (not the source code, silly), and there is output above, then I have proven my point. Convinced? Here's some further reading:
 
+- [Installing](installing)
 - [Preserving Snippets](preserving-snippets)
 
 Not convinced? That's ok, too. Here's a llama:

@@ -13,7 +13,8 @@
     "build": "yarn run build:core && yarn run build:remark-plugin && yarn run build:gatsby-plugin",
     "watch-all": "lerna run watch",
     "test": "lerna run test -- --silent",
-    "test:vscode": "lerna run test --stream --no-sort --"
+    "test:vscode": "lerna run test --stream --no-sort --",
+    "prepublishOnly": "lerna run prepublishOnly"
   },
   "devDependencies": {
     "lerna": "^4.0.0"

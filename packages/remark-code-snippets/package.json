@@ -1,6 +1,6 @@
 {
   "name": "@nmbl/remark-code-snippets",
-  "version": "0.0.1",
+  "version": "1.0.0-beta1",
   "description": "Takes code blocks and extracts snippets from them.",
   "author": "John Rom <web@johnrom.com>",
   "license": "ISC",
@@ -10,7 +10,8 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",

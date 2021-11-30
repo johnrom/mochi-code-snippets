@@ -7,21 +7,21 @@
   "author": "John Rom <john@nimblelight.com>",
   "scripts": {
     "start": "lerna run start --stream",
-    "build:core": "yarn --cwd packages/code-snippets build",
-    "build:remark-plugin": "yarn --cwd packages/remark-code-snippets build",
-    "build:gatsby-plugin": "yarn --cwd packages/gatsby-remark-code-snippets build",
-    "build": "yarn run build:core && yarn run build:remark-plugin && yarn run build:gatsby-plugin",
+    "build": "lerna run build",
     "watch-all": "lerna run watch",
-    "test": "lerna run test -- --silent",
-    "test:vscode": "lerna run test --stream --no-sort --"
+    "serve": "lerna run serve --stream",
+    "test": "lerna run test --stream --concurrency=1",
+    "test:vscode": "lerna run test --stream --no-sort --",
+    "prepublishOnly": "lerna run prepublishOnly --stream",
+    "release": "lerna publish",
+    "release:dryRun": "lerna publish --no-git-tag-version --no-push"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
   },
   "workspaces": {
     "packages": [
-      "packages/*",
-      "examples/*"
+      "packages/*"
     ]
   }
 }

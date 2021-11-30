@@ -13,6 +13,7 @@ export interface PluginOptions {
   extractSnippets?: boolean;
   removeSnippets?: boolean;
   removeDuplicateEmptyNewlines?: boolean | 'always';
+  throwOnMissingSnippet?: boolean;
 }
 
 export const RemarkPluginCodeSnippets: Plugin<
@@ -24,6 +25,7 @@ export const RemarkPluginCodeSnippets: Plugin<
     extractSnippets = true,
     removeSnippets = true,
     removeDuplicateEmptyNewlines: configRemoveDuplicateEmptyNewlines = false,
+    throwOnMissingSnippet = true,
   } = options ?? {};
   return (tree) => {
     visit(tree, 'code', (node) => {
@@ -43,12 +45,23 @@ export const RemarkPluginCodeSnippets: Plugin<
             return;
           }
 
-          node.value = extractCodeSnippet(
+          let snippet = extractCodeSnippet(
             node.lang,
             node.value,
             snippetId,
             eol
           );
+
+          if (typeof snippet === 'undefined') {
+            if (throwOnMissingSnippet) {
+              throw new Error(
+                `@nmbl/remark-code-snippets: SnippetId does not exist: '${snippetId}'`
+              );
+            }
+          }
+
+          node.value = snippet ?? '';
+
           processed = true;
         }
       }
@@ -75,5 +88,3 @@ export const RemarkPluginCodeSnippets: Plugin<
     });
   };
 };
-
-export default RemarkPluginCodeSnippets;

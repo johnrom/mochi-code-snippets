@@ -7,20 +7,22 @@ export const removeCodeSnippets = (
 ) => {
   const regexDefinitions = getCodeSnippetRegexDefinitions(extension);
 
-  for (let i = 0; i < regexDefinitions.length; i++) {
-    const regexDefinition = regexDefinitions[i];
+  if (regexDefinitions) {
+    for (let i = 0; i < regexDefinitions.length; i++) {
+      const regexDefinition = regexDefinitions[i];
 
-    const startRegex = new RegExp(`${regexDefinition.start}${eol}?`, 'igm');
-    const endRegex = new RegExp(`${regexDefinition.end}${eol}?`, 'igm');
-    const emptyEndRegex = new RegExp(
-      `${regexDefinition.emptyEnd}${eol}?`,
-      'igm'
-    );
+      const startRegex = new RegExp(`${regexDefinition.start}${eol}?`, 'igm');
+      const endRegex = new RegExp(`${regexDefinition.end}${eol}?`, 'igm');
+      const emptyEndRegex = new RegExp(
+        `${regexDefinition.emptyEnd}${eol}?`,
+        'igm'
+      );
 
-    codeBlock = codeBlock
-      .replace(startRegex, '')
-      .replace(endRegex, '')
-      .replace(emptyEndRegex, '');
+      codeBlock = codeBlock
+        .replace(startRegex, '')
+        .replace(endRegex, '')
+        .replace(emptyEndRegex, '');
+    }
   }
 
   return codeBlock;

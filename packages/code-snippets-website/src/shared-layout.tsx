@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import { Footer } from './footer/footer';
 import { Header } from './header/header';
 import './style.css';
+import 'highlight.js/styles/vs2015.css';
 
 export const SharedLayout = (props: PropsWithChildren<{}>) => (
   <div>

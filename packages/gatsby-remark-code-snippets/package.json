@@ -1,6 +1,6 @@
 {
   "name": "@nmbl/gatsby-remark-code-snippets",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.0",
   "description": "Takes code blocks and extracts snippets from them in GatsbyJS.",
   "author": "John Rom <web@johnrom.com>",
   "license": "ISC",
@@ -10,7 +10,8 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
@@ -35,7 +36,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.3",
-    "@nmbl/remark-code-snippets": "^0.0.1",
+    "@nmbl/remark-code-snippets": "1.0.0-beta.0",
     "to-gatsby-remark-plugin": "^0.1.0",
     "unist-util-visit": "^4.1.0"
   },

@@ -15,14 +15,13 @@ module.exports = {
       options: {
         extensions: [`.md`, `.mdx`],
         remarkPlugins: [
+          [remarkCodeImport, { async: false, basePath: process.cwd() }],
           [
-            remarkCodeImport,
+            RemarkPluginCodeSnippets,
             {
-              async: false,
-              basePath: process.cwd(),
+              throwOnMissingSnippet: false,
             },
           ],
-          [RemarkPluginCodeSnippets, {}],
         ],
         rehypePlugins: [
           // Generate heading ids for rehype-autolink-headings

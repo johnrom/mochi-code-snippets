@@ -13,7 +13,8 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "watch:config": "rollup -c -w"
   },
   "dependencies": {
     "@johnrom/remark-code-import": "0.4.1-beta1",

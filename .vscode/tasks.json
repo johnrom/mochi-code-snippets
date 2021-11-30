@@ -34,6 +34,18 @@
       "runOptions": {
         "runOn": "folderOpen"
       }
+    },
+    {
+      "type": "npm",
+      "script": "watch:config",
+      "path": "packages/code-snippets-website/",
+      "group": "none",
+      "problemMatcher": [],
+      "label": "npm: watch:config - packages/code-snippets-website",
+      "detail": "rollup -c -w",
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
     }
   ]
 }

@@ -1192,18 +1192,17 @@ module.exports = {
       options: {
         extensions: [`.md`, `.mdx`],
         remarkPlugins: [
+          [remarkCodeImport__default["default"], { async: false, basePath: process.cwd() }],
           [
-            remarkCodeImport__default["default"],
+            remarkCodeSnippets.RemarkPluginCodeSnippets,
             {
-              async: true,
-              basePath: process.cwd(),
+              throwOnMissingSnippet: false,
             },
           ],
-          [remarkCodeSnippets.RemarkPluginCodeSnippets, {}],
         ],
         rehypePlugins: [
           // Generate heading ids for rehype-autolink-headings
-          rehypeSlug,
+          [rehypeSlug, {}],
           // To pass options, use a 2-element array with the
           // configuration in an object in the second element
           [rehypeAutolinkHeadings, { behavior: 'wrap' }],

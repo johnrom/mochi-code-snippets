@@ -63,7 +63,5 @@ export const extractCodeSnippet = (
     return snippet;
   }
 
-  throw new Error(
-    `@nmbl/code-snippets: SnippetId does not exist: '${snippetId}'`
-  );
+  return undefined;
 };

@@ -110,7 +110,7 @@ npm install gatsby-plugin-mdx @nmbl/remark-code-snippets
 
 Then, add it to remarkPlugins:
 
-```js file=../code-snippets-website/gatsby-config.js snippet=gatsby-plugin-mdx--remarkPlugins
+```js file=../code-snippets-website/gatsby-config.src.js snippet=gatsby-plugin-mdx
 
 ```
 

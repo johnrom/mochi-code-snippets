@@ -2,6 +2,7 @@ import remarkCodeImport from '@johnrom/remark-code-import';
 import { RemarkPluginCodeSnippets } from '@nmbl/remark-code-snippets';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeHighlight from 'rehype-highlight';
 
 module.exports = {
   siteMetadata: {
@@ -34,19 +35,18 @@ module.exports = {
         extensions: [`.md`, `.mdx`],
         remarkPlugins: [
           [remarkCodeImport, { async: false, basePath: process.cwd() }],
-          [
-            RemarkPluginCodeSnippets,
-            {
-              throwOnMissingSnippet: false,
-            },
-          ],
+          [RemarkPluginCodeSnippets, {}],
         ],
         rehypePlugins: [
           // Generate heading ids for rehype-autolink-headings
           [rehypeSlug, {}],
-          // To pass options, use a 2-element array with the
-          // configuration in an object in the second element
-          [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+          [
+            rehypeAutolinkHeadings,
+            {
+              behavior: 'wrap',
+            },
+          ],
+          [rehypeHighlight],
         ],
       },
     },

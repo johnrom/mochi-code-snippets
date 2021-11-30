@@ -12,7 +12,7 @@ type RollupConfigCallback = (config: RollupOptions) => RollupOptions;
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
-const esmOnlyPackages = [/unist/, /rehype/, /hast/];
+const esmOnlyPackages = [/unist/, /rehype/, /hast/, /lowlight/, /fault/];
 
 const esmExternal = (source: string) =>
   !source.startsWith('.') && !path.isAbsolute(source);

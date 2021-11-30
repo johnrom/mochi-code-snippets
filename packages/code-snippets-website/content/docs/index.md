@@ -49,7 +49,7 @@ If you're reading this on an actual website (not the source code, silly), and th
 
 Not convinced? That's ok, too. Here's a llama:
 
-> ```
+> ```plaintext
 > \\
 > l'>
 > ll

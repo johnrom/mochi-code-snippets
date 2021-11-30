@@ -11,7 +11,7 @@
     "develop": "gatsby develop",
     "debug": "node --nolazy --inspect-brk=9016 -- ../../node_modules/gatsby/dist/bin/gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build": "rollup -c && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "watch:config": "rollup -c -w"
@@ -34,6 +34,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rehype-autolink-headings": "^6.1.0",
+    "rehype-highlight": "^5.0.0",
     "rehype-slug": "^5.0.0"
   },
   "devDependencies": {

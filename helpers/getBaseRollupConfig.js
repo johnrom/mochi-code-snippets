@@ -7,7 +7,7 @@ import babel from '@rollup/plugin-babel';
 import typescript from 'rollup-plugin-typescript2';
 import path from 'path';
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
-const esmOnlyPackages = [/unist/, /rehype/, /hast/];
+const esmOnlyPackages = [/unist/, /rehype/, /hast/, /lowlight/, /fault/];
 const esmExternal = (source) => !source.startsWith('.') && !path.isAbsolute(source);
 // we pack ESM-only packages for CJS users, just to be nice.
 export const cjsExternal = (source) => esmExternal(source) &&

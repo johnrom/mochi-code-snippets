@@ -11,7 +11,9 @@ const MarkdownPage = ({ data }: MarkdownPageProps) => {
   const { mdx } = data;
   return (
     <SharedLayout>
-      <MDXRenderer className="prose lg:prose-xl">{mdx.body}</MDXRenderer>
+      <div className="prose lg:prose-xl">
+        <MDXRenderer>{mdx.body}</MDXRenderer>
+      </div>
     </SharedLayout>
   );
 };

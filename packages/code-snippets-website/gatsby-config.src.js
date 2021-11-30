@@ -9,6 +9,24 @@ module.exports = {
     title: 'Nmbl Code Snippets - Documentation',
   },
   plugins: [
+    'gatsby-plugin-postcss',
+    'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: `${__dirname}/src/pages/`,
+      },
+      __key: 'pages',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content',
+        path: `${__dirname}/content`,
+      },
+      __key: 'content',
+    },
     // @snippet:start gatsby-plugin-mdx
     {
       resolve: `gatsby-plugin-mdx`,
@@ -33,23 +51,5 @@ module.exports = {
       },
     },
     // @snippet:end gatsby-plugin-mdx
-    'gatsby-plugin-postcss',
-    'gatsby-plugin-typescript',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'pages',
-        path: `${__dirname}/src/pages/`,
-      },
-      __key: 'pages',
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'content',
-        path: `${__dirname}/content`,
-      },
-      __key: 'content',
-    },
   ],
 };

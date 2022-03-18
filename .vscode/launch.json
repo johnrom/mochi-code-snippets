@@ -12,20 +12,19 @@
       "name": "Build All Packages",
       "request": "launch",
       "type": "node-terminal",
-      "cwd": "${workspaceFolder}/packages/code-snippets-website"
+      "autoAttachChildProcesses": false
     },
     {
       "command": "npm run start:website",
-      "name": "Launch Website",
+      "name": "Develop Website",
       "request": "launch",
       "type": "node-terminal"
     },
     {
-      "command": "npm run debug:website",
-      "name": "Debug Website",
+      "command": "npm run serve",
+      "name": "Serve Built Website",
       "request": "launch",
-      "type": "node-terminal",
-      "cwd": "${workspaceFolder}/packages/code-snippets-website"
+      "type": "node-terminal"
     },
     {
       "type": "node",

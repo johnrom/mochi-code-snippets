@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": ["./gatsby-config.src.ts"],
+  "exclude": [],
   "compilerOptions": {
     "module": "ESNext",
     "outDir": ".",

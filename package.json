@@ -1,7 +1,7 @@
 {
   "name": "@nmbl/code-snippets-repo",
   "private": true,
-  "version": "1.0.0-beta.0",
+  "version": "0.0.1",
   "repository": "https://github.com/nimblelight/code-snippets.git",
   "license": "UNLICENSED",
   "author": "John Rom <web@johnrom.com>",
@@ -13,6 +13,9 @@
     "build:library": "lerna run build --ignore @nmbl/code-snippets-website",
     "prepublishOnly": "lerna run prepublishOnly --stream",
     "prestart:website": "yarn build:library",
+    "changeset:start-beta": "yarn changeset pre enter beta",
+    "changeset:version": "yarn changeset version",
+    "publish": "yarn changeset publish",
     "release": "lerna publish",
     "release:dryRun": "lerna publish --no-git-tag-version --no-push",
     "serve": "lerna run serve --stream",

@@ -9,20 +9,19 @@
     },
     {
       "command": "npm run build",
-      "name": "Build Website",
+      "name": "Build All Packages",
       "request": "launch",
       "type": "node-terminal",
       "cwd": "${workspaceFolder}/packages/code-snippets-website"
     },
     {
-      "command": "npm run start",
+      "command": "npm run start:website",
       "name": "Launch Website",
       "request": "launch",
-      "type": "node-terminal",
-      "cwd": "${workspaceFolder}/packages/code-snippets-website"
+      "type": "node-terminal"
     },
     {
-      "command": "npm run debug",
+      "command": "npm run debug:website",
       "name": "Debug Website",
       "request": "launch",
       "type": "node-terminal",

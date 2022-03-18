@@ -1,8 +1,10 @@
-const { RemarkPluginCodeSnippets } = require('@nmbl/remark-code-snippets');
+const {
+  CodeSnippetsRemarkPlugin,
+} = require('@nmbl/code-snippets-remark-plugin');
 const toGatsbyRemarkPlugin = require('to-gatsby-remark-plugin');
 
 export const CodeSnippetsGatsbyRemarkPlugin = toGatsbyRemarkPlugin(
-  RemarkPluginCodeSnippets
+  CodeSnippetsRemarkPlugin
 );
 
 module.exports = CodeSnippetsGatsbyRemarkPlugin;

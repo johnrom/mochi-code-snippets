@@ -5,7 +5,7 @@
   "description": "Nmbl Code Snippets - Website",
   "main": "index.js",
   "repository": "https://github.com/nimblelight/code-snippets.git",
-  "author": "John Rom <john@nimblelight.com>",
+  "author": "John Rom <web@johnrom.com>",
   "license": "UNLICENSED",
   "scripts": {
     "develop": "gatsby develop",

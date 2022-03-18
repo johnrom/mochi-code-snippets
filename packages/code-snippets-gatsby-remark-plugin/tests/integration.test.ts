@@ -1,4 +1,4 @@
-import { PluginOptions } from '@nmbl/remark-code-snippets';
+import { PluginOptions } from '@nmbl/code-snippets-remark-plugin';
 import { remark } from 'remark';
 import path from 'path';
 
@@ -9,17 +9,19 @@ const testArgs: PluginOptions = {
   removeDuplicateEmptyNewlines: 'always',
 };
 
-const GatsbyRemarkPluginCodeSnippets = require('../src/index');
-const { RemarkPluginCodeSnippets } = require('@nmbl/remark-code-snippets');
+const CodeSnippetsGatsbyRemarkPlugin = require('../src/index');
+const {
+  RemarkPluginCodeSnippets: CodeSnippetsRemarkPlugin,
+} = require('@nmbl/code-snippets-remark-plugin');
 
-jest.mock('@nmbl/remark-code-snippets', () => ({
+jest.mock('@nmbl/code-snippets-remark-plugin', () => ({
   RemarkPluginCodeSnippets: jest.fn().mockImplementation(() => jest.fn()),
 }));
 
 test('Correctly instantiates underlying remark plugin.', () => {
   const markdownAST = remark.parse('');
 
-  GatsbyRemarkPluginCodeSnippets(
+  CodeSnippetsGatsbyRemarkPlugin(
     {
       markdownAST,
       markdownNode: {
@@ -30,5 +32,5 @@ test('Correctly instantiates underlying remark plugin.', () => {
     testArgs
   );
 
-  expect(RemarkPluginCodeSnippets).toHaveBeenCalledWith(testArgs);
+  expect(CodeSnippetsRemarkPlugin).toHaveBeenCalledWith(testArgs);
 });

@@ -1,5 +1,5 @@
 {
-  "name": "@nmbl/remark-code-snippets",
+  "name": "@nmbl/code-snippets-remark-plugin",
   "version": "1.0.0-beta.0",
   "description": "Takes code blocks and extracts snippets from them.",
   "author": "John Rom <web@johnrom.com>",

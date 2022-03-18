@@ -20,18 +20,18 @@ The code snippets tool itself can be used by itself by manually passing in markd
 #### Yarn
 
 ```sh
-yarn add remark @nmbl/remark-code-snippets
+yarn add remark @nmbl/code-snippets-remark-plugin
 ```
 
 #### NPM
 
 ```sh
-npm install remark @nmbl/remark-code-snippets
+npm install remark @nmbl/code-snippets-remark-plugin
 ```
 
 ### Then, add it as a plugin to remark:
 
-```ts file=../remark-code-snippets/tests/integration.test.ts snippet=remark-plugin
+```ts file=../code-snippets-remark-plugin/tests/integration.test.ts snippet=remark-plugin
 
 ```
 
@@ -48,13 +48,13 @@ npm install remark @nmbl/remark-code-snippets
 ##### Yarn
 
 ```sh
-yarn add gatsby-transformer-remark @nmbl/gatsby-remark-code-snippets
+yarn add gatsby-transformer-remark @nmbl/code-snippets-gatsby-remark-plugin
 ```
 
 ##### NPM
 
 ```sh
-npm install gatsby-transformer-remark @nmbl/gatsby-remark-code-snippets
+npm install gatsby-transformer-remark @nmbl/code-snippets-gatsby-remark-plugin
 ```
 
 #### Then, add it as a plugin
@@ -74,7 +74,7 @@ module.exports = {
             },
           },
           {
-            resolve: '@nmbl/gatsby-remark-code-snippets',
+            resolve: '@nmbl/code-snippets-gatsby-remark-plugin',
             options: {},
           },
         ],
@@ -88,7 +88,7 @@ module.exports = {
 
 > This documentation assumes you have initialized a Gatsby project already and are sourcing markdown from somewhere to process.
 
-With `gatsby-plugin-mdx`, either the plugin `@nmbl/remark-code-snippets` can be used as a plugin via `remarkPlugins`, or `@nmbl/gatsby-remark-code-snippets` can be used as a plugin via `plugins`.
+With `gatsby-plugin-mdx`, either the plugin `@nmbl/code-snippets-remark-plugin` can be used as a plugin via `remarkPlugins`, or `@nmbl/code-snippets-gatsby-remark-plugin` can be used as a plugin via `plugins`.
 
 Choosing one or the other for all of your plugins is preferable, so they can be reliably called in order. I prefer using remarkPlugins + rehypePlugins for full power.
 
@@ -99,13 +99,13 @@ With `remarkPlugins`, install just the plain remark plugin:
 #### Yarn
 
 ```sh
-yarn add gatsby-plugin-mdx @nmbl/remark-code-snippets
+yarn add gatsby-plugin-mdx @nmbl/code-snippets-remark-plugin
 ```
 
 ##### NPM
 
 ```sh
-npm install gatsby-plugin-mdx @nmbl/remark-code-snippets
+npm install gatsby-plugin-mdx @nmbl/code-snippets-remark-plugin
 ```
 
 Then, add it to remarkPlugins:
@@ -121,13 +121,13 @@ With `gatsbyRemarkPlugins`, install the Gatsby plugin:
 #### Yarn
 
 ```sh
-yarn add gatsby-plugin-mdx @nmbl/gatsby-remark-code-snippets
+yarn add gatsby-plugin-mdx @nmbl/code-snippets-gatsby-remark-plugin
 ```
 
 ##### NPM
 
 ```sh
-npm install gatsby-plugin-mdx @nmbl/gatsby-remark-code-snippets
+npm install gatsby-plugin-mdx @nmbl/code-snippets-gatsby-remark-plugin
 ```
 
 Then, add it to gatsbyRemarkPlugins:
@@ -140,7 +140,7 @@ module.exports = {
       options: {
         gatsbyRemarkPlugins: [
           {
-            resolve: `@nmbl/gatsby-remark-code-snippets`,
+            resolve: `@nmbl/code-snippets-gatsby-remark-plugin`,
             options: {},
           },
         ],

@@ -16,7 +16,7 @@ export interface PluginOptions {
   throwOnMissingSnippet?: boolean;
 }
 
-export const RemarkPluginCodeSnippets: Plugin<
+export const CodeSnippetsRemarkPlugin: Plugin<
   (PluginOptions | undefined)[],
   Root
 > = (options) => {
@@ -55,7 +55,7 @@ export const RemarkPluginCodeSnippets: Plugin<
           if (typeof snippet === 'undefined') {
             if (throwOnMissingSnippet) {
               throw new Error(
-                `@nmbl/remark-code-snippets: SnippetId does not exist: '${snippetId}'`
+                `@nmbl/code-snippets-remark-plugin: SnippetId does not exist: '${snippetId}'`
               );
             }
           }

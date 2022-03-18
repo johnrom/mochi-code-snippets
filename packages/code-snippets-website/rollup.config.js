@@ -1,10 +1,21 @@
 import { getBaseBuildConfig } from '../../helpers/getBaseRollupConfig';
 import { cjsExternal } from '../../helpers/getBaseRollupConfig';
+import typescript from 'rollup-plugin-typescript2';
+
+const configFilePath = './gatsby-config.src.ts';
+
+const baseConfig = getBaseBuildConfig([configFilePath]);
 
 export default {
-  ...getBaseBuildConfig(['./gatsby-config.js']),
-  input: './gatsby-config.src.js',
+  ...baseConfig,
+  input: configFilePath,
   external: cjsExternal,
+  plugins: [
+    ...baseConfig.plugins,
+    typescript({
+        tsconfig: './tsconfig.rollup.json',
+    })
+  ],
   output: [
     {
       file: './gatsby-config.js',

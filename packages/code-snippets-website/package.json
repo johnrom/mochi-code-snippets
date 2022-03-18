@@ -9,9 +9,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "develop": "gatsby develop",
-    "debug": "node --nolazy --inspect-brk=9016 -- ../../node_modules/gatsby/dist/bin/gatsby develop",
-    "start": "gatsby develop",
-    "build": "rollup -c && gatsby build",
+    "debug": "yarn build:config && node --nolazy --inspect-brk=9016 -- ../../node_modules/gatsby/dist/bin/gatsby develop",
+    "start": "yarn build:config && gatsby develop",
+    "build": "yarn build:config && gatsby build",
+    "build:config": "rollup -c",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "watch:config": "rollup -c -w"
@@ -20,7 +21,7 @@
     "@johnrom/remark-code-import": "0.4.1-beta1",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@nmbl/gatsby-remark-code-snippets": "1.0.0-beta.0",
+    "@nmbl/code-snippets-gatsby-remark-plugin": "1.0.0-beta.0",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.4.0",
     "gatsby": "^4.2.0",

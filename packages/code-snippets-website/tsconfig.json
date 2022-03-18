@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.base.json",
   "include": ["./src"],
   "compilerOptions": {
     "module": "commonjs",
@@ -16,15 +17,11 @@
     "baseUrl": "../../",
     "paths": {
       "@nmbl/code-snippets": ["packages/code-snippets/src"],
-      "@nmbl/remark-code-snippet-remover": [
-        "packages/remark-code-snippet-remover/src"
+      "@nmbl/code-snippets-remark-plugin": [
+        "packages/code-snippets-remark-plugin/src"
       ],
-      "@nmbl/remark-code-snippets": ["packages/remark-code-snippets/src"],
-      "@nmbl/gatsby-remark-code-snippet-remover": [
-        "packages/gatsby-remark-code-snippet-remover/src"
-      ],
-      "@nmbl/gatsby-remark-code-snippets": [
-        "packages/gatsby-remark-code-snippets/src"
+      "@nmbl/code-snippets-gatsby-remark-plugin": [
+        "packages/code-snippets-gatsby-remark-plugin/src"
       ]
     }
   }

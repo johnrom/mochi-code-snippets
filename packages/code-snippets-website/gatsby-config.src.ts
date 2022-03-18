@@ -1,8 +1,9 @@
-import remarkCodeImport from '@johnrom/remark-code-import';
-import { RemarkPluginCodeSnippets } from '@nmbl/remark-code-snippets';
+import { CodeSnippetsRemarkPlugin } from '@nmbl/code-snippets-remark-plugin';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeHighlight from 'rehype-highlight';
+
+const remarkCodeImport = require('@johnrom/remark-code-import');
 
 module.exports = {
   siteMetadata: {
@@ -35,7 +36,7 @@ module.exports = {
         extensions: [`.md`, `.mdx`],
         remarkPlugins: [
           [remarkCodeImport, { async: false, basePath: process.cwd() }],
-          [RemarkPluginCodeSnippets, {}],
+          [CodeSnippetsRemarkPlugin, {}],
         ],
         rehypePlugins: [
           // Generate heading ids for rehype-autolink-headings

@@ -1,23 +1,32 @@
 {
   "name": "@nmbl/code-snippets-repo",
-  "private": "true",
-  "version": "1.0.0",
+  "private": true,
+  "version": "1.0.0-beta.0",
   "repository": "https://github.com/nimblelight/code-snippets.git",
   "license": "UNLICENSED",
   "author": "John Rom <john@nimblelight.com>",
+  "engines": {
+    "node": "14.19.1"
+  },
   "scripts": {
-    "start": "lerna run start --stream",
     "build": "lerna run build",
-    "watch-all": "lerna run watch",
-    "serve": "lerna run serve --stream",
-    "test": "lerna run test --stream --concurrency=1",
-    "test:vscode": "lerna run test --stream --no-sort --",
     "prepublishOnly": "lerna run prepublishOnly --stream",
     "release": "lerna publish",
-    "release:dryRun": "lerna publish --no-git-tag-version --no-push"
+    "release:dryRun": "lerna publish --no-git-tag-version --no-push",
+    "serve": "lerna run serve --stream",
+    "setup": "npm run setup:npm && npm run setup:yarn && npm run setup:install",
+    "setup:crossenv": "npm install -g cross-env",
+    "setup:install": "yarn",
+    "setup:npm": "npm run setup:crossenv && cross-env-shell \"nvm install $npm_package_engines_node && nvm use $npm_package_engines_node\"",
+    "setup:yarn": "npm i -g yarn",
+    "start": "lerna run start --stream",
+    "watch-all": "lerna run watch",
+    "test": "lerna run test --stream --concurrency=1",
+    "test:vscode": "lerna run test --stream --no-sort --"
   },
-  "devDependencies": {
-    "lerna": "^4.0.0"
+  "dependencies": {
+    "lerna": "^4.0.0",
+    "@changesets/cli": "^2.21.1"
   },
   "workspaces": {
     "packages": [

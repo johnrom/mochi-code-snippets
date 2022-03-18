@@ -2,7 +2,7 @@ import {
   getBasicTestFileJs,
   getBasicTestFileMd,
 } from './test-helpers/test-file-helpers';
-import { RemarkPluginCodeSnippets } from '../src/index';
+import { CodeSnippetsRemarkPlugin } from '../src/index';
 import { remark } from 'remark';
 
 /**
@@ -26,7 +26,7 @@ test('Plugin works.', () => {
   expect(
     // @snippet:start remark-plugin
     remark()
-      .use(RemarkPluginCodeSnippets, {})
+      .use(CodeSnippetsRemarkPlugin, {})
       .processSync(
         `\`\`\`js snippet=test-snippet
         const hello = () => {
@@ -49,7 +49,7 @@ test('Plugin works.', () => {
 test("Doesn't affect extensionless blocks.", () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\n',
       })
       .processSync(getJsMarkdownWithoutExtension())
@@ -79,7 +79,7 @@ test("Doesn't affect extensionless blocks.", () => {
 test('Extracts and removes snippets by default.', () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\n',
       })
       .processSync(getJsMarkdown('snippet=start-fn'))
@@ -98,7 +98,7 @@ test('Extracts and removes snippets by default.', () => {
 test('Works with custom EOL.', () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\r\n',
       })
       .processSync(getJsMarkdown('snippet=start-fn', '\r\n'))
@@ -117,7 +117,7 @@ test('Works with custom EOL.', () => {
 test('Preserves snippets via configuration.', () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\n',
         removeSnippets: false,
       })
@@ -140,7 +140,7 @@ test('Preserves snippets via configuration.', () => {
 test('Preserves snippets via code block metadata.', () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\n',
       })
       .processSync(getJsMarkdown('snippet=start-fn preserve-snippets'))
@@ -162,7 +162,7 @@ test('Preserves snippets via code block metadata.', () => {
 test('Removes snippets even when no snippet is configured.', () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\n',
         extractSnippets: false,
       })
@@ -186,7 +186,7 @@ test('Removes snippets even when no snippet is configured.', () => {
 test("Doesn't extract snippets unless configured to.", () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\n',
         extractSnippets: false,
       })
@@ -210,7 +210,7 @@ test("Doesn't extract snippets unless configured to.", () => {
 test('Removes duplicate newlines when configured.', () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\n',
         removeDuplicateEmptyNewlines: true,
       })
@@ -233,7 +233,7 @@ test('Removes duplicate newlines when configured.', () => {
 test('Doesn\t remove newlines unless configured.', () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\n',
       })
       .processSync(getMdMarkdown())
@@ -258,7 +258,7 @@ test('Doesn\t remove newlines unless configured.', () => {
 test('Doesn\t remove newlines when unprocessed by plugin by default.', () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\n',
         removeSnippets: false,
         removeDuplicateEmptyNewlines: true,
@@ -278,7 +278,7 @@ test('Doesn\t remove newlines when unprocessed by plugin by default.', () => {
 test('Removes duplicate newlines when unprocessed by plugin when configured.', () => {
   expect(
     remark()
-      .use(RemarkPluginCodeSnippets, {
+      .use(CodeSnippetsRemarkPlugin, {
         eol: '\n',
         removeSnippets: false,
         removeDuplicateEmptyNewlines: 'always',

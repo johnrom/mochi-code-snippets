@@ -1,6 +1,6 @@
 {
   "name": "@nmbl/code-snippets-remark-plugin",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.0",
   "description": "Takes code blocks and extracts snippets from them.",
   "author": "John Rom <web@johnrom.com>",
   "license": "ISC",
@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.3",
-    "@nmbl/code-snippets": "0.0.1",
+    "@nmbl/code-snippets": "1.0.0-beta.0",
     "unist-util-visit": "^4.1.0"
   },
   "jest": {

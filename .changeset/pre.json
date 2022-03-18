@@ -1,0 +1,13 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@nmbl/code-snippets": "0.0.1",
+    "@nmbl/code-snippets-gatsby-remark-plugin": "0.0.1",
+    "@nmbl/code-snippets-remark-plugin": "0.0.1",
+    "@nmbl/code-snippets-website": "0.0.1"
+  },
+  "changesets": [
+    "new-bugs-buy"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "@nmbl/code-snippets-website",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.0",
   "private": true,
   "description": "Nmbl Code Snippets - Website",
   "main": "index.js",
@@ -21,7 +21,7 @@
     "@johnrom/remark-code-import": "0.4.1-beta1",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@nmbl/code-snippets-gatsby-remark-plugin": "0.0.1",
+    "@nmbl/code-snippets-gatsby-remark-plugin": "1.0.0-beta.0",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.4.0",
     "gatsby": "^4.2.0",

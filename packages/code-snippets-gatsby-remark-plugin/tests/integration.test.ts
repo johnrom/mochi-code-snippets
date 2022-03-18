@@ -11,11 +11,11 @@ const testArgs: PluginOptions = {
 
 const CodeSnippetsGatsbyRemarkPlugin = require('../src/index');
 const {
-  RemarkPluginCodeSnippets: CodeSnippetsRemarkPlugin,
+  CodeSnippetsRemarkPlugin,
 } = require('@nmbl/code-snippets-remark-plugin');
 
 jest.mock('@nmbl/code-snippets-remark-plugin', () => ({
-  RemarkPluginCodeSnippets: jest.fn().mockImplementation(() => jest.fn()),
+  CodeSnippetsRemarkPlugin: jest.fn().mockImplementation(() => jest.fn()),
 }));
 
 test('Correctly instantiates underlying remark plugin.', () => {

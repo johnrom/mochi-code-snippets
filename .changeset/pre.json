@@ -8,6 +8,7 @@
     "@nmbl/code-snippets-website": "0.0.1"
   },
   "changesets": [
+    "beige-balloons-protect",
     "new-bugs-buy"
   ]
 }

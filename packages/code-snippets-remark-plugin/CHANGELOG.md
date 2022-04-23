@@ -1,5 +1,16 @@
 # @nmbl/code-snippets-remark-plugin
 
+## 1.0.0-beta.1
+
+### Major Changes
+
+- dfa0e5c: Switch to default exports since they just work in Remark world.
+
+### Patch Changes
+
+- Updated dependencies [dfa0e5c]
+  - @nmbl/code-snippets@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes

@@ -2,7 +2,7 @@ import {
   getBasicTestFileJs,
   getBasicTestFileMd,
 } from './test-helpers/test-file-helpers';
-import { CodeSnippetsRemarkPlugin } from '../src/index';
+import CodeSnippetsRemarkPlugin from '../src/index';
 import { remark } from 'remark';
 
 /**

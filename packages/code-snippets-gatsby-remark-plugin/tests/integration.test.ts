@@ -1,6 +1,7 @@
 import { PluginOptions } from '@nmbl/code-snippets-remark-plugin';
 import { remark } from 'remark';
 import path from 'path';
+import CodeSnippetsGatsbyRemarkPlugin from '../src/index';
 
 const testArgs: PluginOptions = {
   eol: '\n',
@@ -9,14 +10,11 @@ const testArgs: PluginOptions = {
   removeDuplicateEmptyNewlines: 'always',
 };
 
-const CodeSnippetsGatsbyRemarkPlugin = require('../src/index');
-const {
-  CodeSnippetsRemarkPlugin,
-} = require('@nmbl/code-snippets-remark-plugin');
+const CodeSnippetsRemarkPlugin = require('@nmbl/code-snippets-remark-plugin');
 
-jest.mock('@nmbl/code-snippets-remark-plugin', () => ({
-  CodeSnippetsRemarkPlugin: jest.fn().mockImplementation(() => jest.fn()),
-}));
+jest.mock('@nmbl/code-snippets-remark-plugin', () =>
+  jest.fn().mockImplementation(() => jest.fn())
+);
 
 test('Correctly instantiates underlying remark plugin.', () => {
   const markdownAST = remark.parse('');

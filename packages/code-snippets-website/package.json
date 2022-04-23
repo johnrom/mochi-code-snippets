@@ -6,7 +6,7 @@
   "main": "index.js",
   "repository": "https://github.com/nimblelight/code-snippets.git",
   "author": "John Rom <web@johnrom.com>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
     "debug": "yarn build:config && node --nolazy --inspect-brk=9016 -- ../../node_modules/gatsby/dist/bin/gatsby develop",

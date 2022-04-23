@@ -1,4 +1,4 @@
-import { CodeSnippetsRemarkPlugin } from '@nmbl/code-snippets-remark-plugin';
+import CodeSnippetsRemarkPlugin from '@nmbl/code-snippets-remark-plugin';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeHighlight from 'rehype-highlight';

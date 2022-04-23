@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "repository": "https://github.com/nimblelight/code-snippets.git",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "John Rom <web@johnrom.com>",
   "engines": {
     "node": "14.19.1"
@@ -11,6 +11,9 @@
   "scripts": {
     "build": "lerna run build",
     "build:library": "lerna run build --ignore @nmbl/code-snippets-website",
+    "build:readme": "remark --rc-path ./package.json ./packages/code-snippets-website/content/index.md --output ./README.md",
+    "build:docs-folder": "remark --rc-path ./package.json ./packages/code-snippets-website/content/docs --output ./docs/",
+    "build:docs": "npm run build:readme && npm run build:docs-folder",
     "prepublishOnly": "lerna run prepublishOnly --stream",
     "prestart:website": "yarn build:library",
     "changeset:start-beta": "yarn changeset pre enter beta",
@@ -31,12 +34,34 @@
     "test:vscode": "lerna run test --stream --no-sort --"
   },
   "dependencies": {
+    "@changesets/cli": "^2.21.1",
     "lerna": "^4.0.0",
-    "@changesets/cli": "^2.21.1"
+    "remark-cli": "^10.0.1",
+    "remark-frontmatter": "^4.0.1"
   },
   "workspaces": {
     "packages": [
       "packages/*"
+    ]
+  },
+  "resolutions": {
+    "babel-plugin-syntax-trailing-function-commas": "6.22.0"
+  },
+  "remarkConfig": {
+    "settings": {},
+    "plugins": [
+      [ "remark-frontmatter", { "type": "yaml", "marker": "-" }],
+      [
+        "@johnrom/remark-code-import",
+        {
+          "async": false,
+          "basePath": "./packages/code-snippets-website"
+        }
+      ],
+      [
+        "@nmbl/code-snippets-remark-plugin",
+        {}
+      ]
     ]
   }
 }

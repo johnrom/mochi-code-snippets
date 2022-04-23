@@ -16,10 +16,9 @@ export interface PluginOptions {
   throwOnMissingSnippet?: boolean;
 }
 
-export const CodeSnippetsRemarkPlugin: Plugin<
-  (PluginOptions | undefined)[],
-  Root
-> = (options) => {
+const CodeSnippetsRemarkPlugin: Plugin<(PluginOptions | undefined)[], Root> = (
+  options
+) => {
   const {
     eol = EOL,
     extractSnippets = true,
@@ -88,3 +87,5 @@ export const CodeSnippetsRemarkPlugin: Plugin<
     });
   };
 };
+
+export default CodeSnippetsRemarkPlugin;

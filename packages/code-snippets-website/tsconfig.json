@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["./src"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "preserve",
+    "lib": ["dom", "es2015", "es2017"],
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "baseUrl": "../../",
+    "paths": {
+      "@nmbl/code-snippets": ["packages/code-snippets/src"],
+      "@nmbl/code-snippets-remark-plugin": [
+        "packages/code-snippets-remark-plugin/src"
+      ],
+      "@nmbl/code-snippets-gatsby-remark-plugin": [
+        "packages/code-snippets-gatsby-remark-plugin/src"
+      ]
+    }
+  }
+}

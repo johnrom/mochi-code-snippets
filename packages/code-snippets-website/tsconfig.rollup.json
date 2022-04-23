@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["./gatsby-config.src.ts"],
+  "exclude": [],
+  "compilerOptions": {
+    "module": "ESNext",
+    "outDir": ".",
+    "declaration": false,
+    "paths": {
+      "@nmbl/code-snippets": ["../code-snippets/src"],
+      "@nmbl/code-snippets-remark-plugin": [
+        "../code-snippets-remark-plugin/src"
+      ],
+      "@nmbl/code-snippets-gatsby-remark-plugin": [
+        "../code-snippets-gatsby-remark-plugin/src"
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+// Just compile JS here in fixture land.
+{
+  "extends": "../tsconfig.base.json",
+  "exclude": [],
+  "compilerOptions": {
+    "outDir": ".",
+    "module": "ESNext",
+    "declaration": false
+  }
+}

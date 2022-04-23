@@ -1,0 +1,48 @@
+{
+  "configurations": [
+    {
+      "name": "Attach by Process ID",
+      "processId": "${command:PickProcess}",
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "pwa-node"
+    },
+    {
+      "command": "npm run build",
+      "name": "Build All Packages",
+      "request": "launch",
+      "type": "node-terminal",
+      "autoAttachChildProcesses": false
+    },
+    {
+      "command": "npm run start:website",
+      "name": "Develop Website",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run serve",
+      "name": "Serve Built Website",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "type": "node",
+      "name": "vscode-jest-tests",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "yarn",
+      "args": [
+        "run",
+        "test",
+        "--runInBand",
+        // when filtering, every package not matching will have no tests
+        "--passWithNoTests",
+        "--testTimeout=9999"
+      ]
+    }
+  ]
+}

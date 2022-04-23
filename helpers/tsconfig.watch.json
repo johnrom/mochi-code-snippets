@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.base.json",
+  "exclude": [],
+  "compilerOptions": {
+    "module": "ESNext",
+    "outDir": ".",
+    "declaration": false,
+    "moduleResolution": "Node"
+  }
+}

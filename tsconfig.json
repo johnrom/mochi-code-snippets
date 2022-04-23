@@ -1,17 +1,16 @@
 {
+  "extends": "./tsconfig.base.json",
+  "include": ["packages", "helpers", "fixtures"],
   "compilerOptions": {
-    "outDir": "dist",
-
-    "lib": ["es2019", "es2020.promise", "es2020.bigint", "es2020.string"],
-    "module": "commonjs",
-    "target": "es2019",
-
-    "declaration": true,
-    "allowSyntheticDefaultImports": true,
-
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "baseUrl": ".",
+    "paths": {
+      "@nmbl/code-snippets": ["./packages/code-snippets/src"],
+      "@nmbl/code-snippets-remark-plugin": [
+        "./packages/code-snippets-remark-plugin/src"
+      ],
+      "@nmbl/code-snippets-gatsby-remark-plugin": [
+        "./packages/code-snippets-gatsby-remark-plugin/src"
+      ]
+    }
   }
 }
